@@ -9,11 +9,11 @@
     all: kernel.elf
 
     kernel.elf: $(OBJECTS)
-        ld $(LDFLAGS) $(OBJECTS) -o kernel.elf
+	ld $(LDFLAGS) $(OBJECTS) -o kernel.elf
 
     os.iso: kernel.elf
-        cp kernel.elf iso/boot/kernel.elf
-        genisoimage -R                              \
+	cp kernel.elf iso/boot/kernel.elf
+	genisoimage -R                              \
                     -b boot/grub/stage2_eltorito    \
                     -no-emul-boot                   \
                     -boot-load-size 4               \
@@ -25,13 +25,13 @@
                     iso
 
     run: os.iso
-        bochs -f bochsrc.txt -q
+	bochs -f bochsrc.txt -q
 
     %.o: %.c
-        $(CC) $(CFLAGS)  $< -o $@
+	$(CC) $(CFLAGS)  $< -o $@
 
     %.o: %.s
-        $(AS) $(ASFLAGS) $< -o $@
+	$(AS) $(ASFLAGS) $< -o $@
 
     clean:
-        rm -rf *.o kernel.elf os.iso
+	rm -rf *.o kernel.elf os.iso
