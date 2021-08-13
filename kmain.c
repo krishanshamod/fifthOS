@@ -4,12 +4,12 @@
 
     void kmain()
     {
-       segments_install_gdt();
-       
+
        char arr[] = "Welcome to fifthOS";
        fb_write(arr, 20);
        serial_configure(SERIAL_COM1_BASE, Baud_115200);
        serial_write(SERIAL_COM1_BASE, arr, 20);
+       segments_install_gdt();
 
     }
 
