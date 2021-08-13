@@ -1,4 +1,4 @@
-#include "memory_segments.h"
+#include "segments.h"
 
 #define SEGMENT_DESCRIPTOR_COUNT 3
 #define SEGMENT_BASE 0
