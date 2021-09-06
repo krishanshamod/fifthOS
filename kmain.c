@@ -19,7 +19,7 @@ int kmain(unsigned int ebx){
    unsigned int address_of_module = modules->mod_start;
 
    if((mbinfo->mods_count) == 1){
-      char str[] = "Module successfully loaded";
+      char str[] = "Module successfully loaded\n";
       serial_write(str,sizeof(str));
       
       typedef void (*call_module_t)(void);
@@ -28,7 +28,7 @@ int kmain(unsigned int ebx){
 
    }
    else{
-      char str[] = "Multiple modules loaded";
+      char str[] = "Multiple modules loaded\n";
       serial_write(str,sizeof(str));
    }
 
