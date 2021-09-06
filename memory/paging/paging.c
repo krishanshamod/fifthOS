@@ -7,6 +7,7 @@
 #include "string.h"
 #include "../heap/memory.h"
 #include "../../utils/log.h"
+#include "../../drivers/serial_port/serial_port.h"
 
 extern directory_t boot_page_directory; // pre-allocated by nasm (also page aligned)
 
@@ -94,7 +95,7 @@ extern void load_page_directory(directory_t *directory);
 extern void enable_paging();
 
 void init_paging() {
-  info("initializing paging...");
+  info("Initializing paging");
 
   // listen for page faults
   register_interrupt_handler(14, handle_page_fault);
@@ -103,5 +104,8 @@ void init_paging() {
 
   load_page_directory(&boot_page_directory);
   enable_paging();
-  info("paging enabled, good luck.");
+  info("Paging enabled");
+
+  char str[] = "Paging enabled\n";
+  serial_write(str,sizeof(str));
 }
