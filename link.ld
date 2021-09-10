@@ -26,3 +26,4 @@ SECTIONS {
 }
 
 kernel_end = .;
+kernel_physical_end = . - 0xC0000000;
