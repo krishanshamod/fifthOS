@@ -1,40 +1,29 @@
-#ifndef INCLUDE_LOGGER_H
-#define INCLUDE_LOGGER_H
+#ifndef __LOG_H__
+#define __LOG_H__
 
-#pragma once
-#include "types.h"
+#include "string.h"
 
-/** print_serial:
- *  writes the char array buffer of length len to serial console
- *
- *  @param buffer  Buffer that has contents to be written to serial port
- */
-void print_serial(s8int buffer[]);
+#if DEBUG >= 4
+#define debug(msg, ...) printf("[debug] %s:%i " msg "\n", __FILE__, __LINE__, ##__VA_ARGS__)
+#else
+#define debug(msg, ...)
+#endif
 
-/** print_serial:
- *  writes the char to serial console
- *
- *  @param ch  Buffer that has contents to be written to serial port
- */
-void print_serial_ch(s8int ch);
+#if DEBUG >= 3
+#define info(msg, ...) printf("[info] " msg "\n", __FILE__, __LINE__, ##__VA_ARGS__)
+#else
+#define info(msg, ...)
+#endif
 
-/** print_screen:
- *  writes the char buffer buf of length len to Screen
- *
- *  @param buffer  Buffer that has contents to be written to Screen
- */
-void print_screen(s8int buffer[]);
+#if DEBUG >= 1
+#define warn(msg, ...) printf("[warn] %s:%i " msg "\n", __FILE__, __LINE__, ##__VA_ARGS__)
+#else
+#define warn(msg, ...)
+#endif
 
-/** print_screen:
- *  writes the char to Screen
- *
- *  @param ch  Buffer that has contents to be written to Screen
- */
-void print_screen_ch(s8int ch);
-
-/** init_display:
- *  Initializes the frame buffer
- */
-void init_display();
-
-#endif /* INCLUDE_LOGGER_H */
+#if DEBUG >= 0
+#define error(msg, ...) printf("[error] %s:%i " msg "\n", __FILE__, __LINE__, ##__VA_ARGS__)
+#else
+#define error(msg, ...)
+#endif
+#endif
