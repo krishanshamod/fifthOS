@@ -1,7 +1,7 @@
 #include "interrupts.h"
 #include "pic.h"
-#include "../io/io.h"
-#include "../serial_port/serial_port.h"
+#include "../drivers/io.h"
+#include "../drivers/serial_port.h"
 #include "keyboard.h"
 
 #define INTERRUPTS_DESCRIPTOR_COUNT 256 

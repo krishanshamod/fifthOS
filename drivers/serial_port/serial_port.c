@@ -1,4 +1,4 @@
-#include "../io/io.h"
+#include "io.h"
 #include "serial_port.h"
 
 void serial_configure_baud_rate(unsigned short com, unsigned short divisor) {

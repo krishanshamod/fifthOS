@@ -4,15 +4,15 @@
 #include "multiboot.h"
 #include "memory/paging/paging.h"
 
-void init(u32int kernelPhysicalStart, u32int kernelPhysicalEnd){
+void init(){
    segments_install_gdt();
    interrupts_install_idt();
-   init_paging(kernelPhysicalStart, kernelPhysicalEnd);
+   init_paging();
 }
 
-int kmain(unsigned int ebx, u32int kernel_physical_start, u32int kernel_physical_end){
+int kmain(unsigned int ebx){
    
-   init(kernel_physical_start, kernel_physical_end);
+   init();
 
    multiboot_info_t *mbinfo = (multiboot_info_t *) ebx;
    multiboot_module_t* modules = (multiboot_module_t*) mbinfo->mods_addr; 
